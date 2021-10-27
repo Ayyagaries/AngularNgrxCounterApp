@@ -1,28 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-
+import {CounterService} from "./../../service/counter.service"
 @Component({
   selector: 'app-counter',
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.css']
 })
 export class CounterComponent implements OnInit {
-   counter:number = 0;
-  constructor() { }
+ 
+  constructor(private counterService:CounterService) { }
 
   ngOnInit(): void {
+     
   }
 
   onIncrement(): void {
-    this.counter++;
+      this.counterService.onIncrement()
+     
+  }
+
+  getCounter(): number {
+   return this.counterService.getCounter()
   }
 
   onDecrement(): void {
-    this.counter--;
+    this.counterService.onDecrement();
   }
 
   onReset(): void {
-    this.counter=0;
+    this.counterService.onReset();
   }
+
+
   
 
 }
